@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <title>INST377 Lab 4</title>
+        <style>
+            body {
+                background-color: #ADD8E6;
+                font-family: 'Times New Roman', Times, serif;
+                margin: 20px;
+            }
+            .section {
+                background-color: purple;
+                color: white;
+                border: 5px solid white; 
+                padding: 20px;
+                border-radius: 15px;
+                width: 40%;
+                display: inline-block;
+                margin: 10px;
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1 id="mainHead">INST377 - Lab 4</h1>
+        <div class="section">
+        <!-- Alert Me  -->
+            <form id="alertForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <button type="button" onclick="alertMe()">Alert Me!</button>
+            </form>
+            <script type="text/javascript">
+                function alertMe() {
+                    const name = document.getElementById('name').value;
+                    if (name === "") {
+                        alert(`Please enter a name!`);
+                    } else {
+                        alert(`Hi ${name}!`);
+                    }
+                }
+            </script>
+        </div>
+    
+        <!-- Change Color  -->
+        <div class="section">
+            <button id ="color" onclick="changeColor()">Change Color</button>
+            <script type="text/javascript">
+                function changeColor() {
+                    if (document.body.style.backgroundColor === 'green') {
+                        document.body.style.backgroundColor = '#ADD8E6'; 
+                    } else {
+                        document.body.style.backgroundColor = 'green';
+                    }
+                }
+            </script>
+        </div>
+    
+        <!-- Text Tester  -->
+        <div class="section">
+            <form id="textForm">
+                <label for="text">Text Tester: </label>
+                <input type="text" id="text" name="text">
+                <button onclick="validateText()">Validate Text</button>
+            </form>
+            <script type="text/javascript">
+                function validateText() {
+                    const validationRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                    if (validationRegex.test(document.getElementById('text').value)) {
+                        alert("How about...nah!");
+                        return false
+                    } 
+                    return true
+                }
+            </script>
+        </div>
+    
+        <!-- Add Text  -->
+        <div class="section">
+            <button type="button" onclick="addText()">Add Text</button>
+            <script type="text/javascript">
+                function addText() {
+                    const heading = document.getElementById('mainHead');
+                    if (!heading.textContent.includes("Adding Text")) {
+                        heading.textContent += " - Adding Text";
+                    }
+                }
+            </script>
+        </div>
+    </body>
+</html>
